@@ -1,0 +1,10 @@
+.float-right{
+  float: right;
+}
+.sort-icon {
+  cursor: pointer;
+}
+
+.sort-icon:hover {
+  opacity: 0.6
+}

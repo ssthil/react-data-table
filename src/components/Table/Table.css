@@ -1,0 +1,26 @@
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+th{
+  background: #e0e3fd;
+  color: #0e1840;
+  font-size: 16px;
+  font-weight: normal;
+}
+table, th, td {
+  border: 1px solid rgb(198, 203, 219);
+}
+th, td {
+  padding: 15px;
+  text-align: left;
+}
+
+.search-control {
+  width: 100%;
+  height: 46px;
+  /* border: none !important; */
+  outline: none;
+  font-family: Arial, sans-serif;
+  font-style: italic;
+}

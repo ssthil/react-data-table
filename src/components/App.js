@@ -1,12 +1,16 @@
-import React, { Component } from "react";
-
-const API_URL = "https://personio-fe-test.herokuapp.com/api/v1/candidates";
+import React, { Component } from 'react';
+/** components */
+import Spinner from './Spinner/Spinner';
+import Table from './Table/Table';
+import SearchControl from './SearchControl';
+/** api url */
+const API_URL = 'https://personio-fe-test.herokuapp.com/api/v1/candidates';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: "React Data Table App",
+      title: 'React Data Table App',
       applicants: []
     };
   }
@@ -20,38 +24,43 @@ class App extends Component {
       .then(response => response.json())
       .then(result => this.setState({ applicants: result.data }));
   }
+  /** search */
+  handleSearch = e => {
+    this.setState({
+      searchQuery: e.target.value
+    });
+    console.log(this.state.searchQuery);
+  };
 
   render() {
     const { title, applicants } = this.state;
     return (
       <div className="container-fluid">
         <h2>{title} </h2>
-        <table>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Birth Date</th>
-              <th>Experience</th>
-              <th>Position Applied</th>
-              <th>Application Date</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            {applicants.map(data => (
-              <tr key={data.id}>
-                <td>{data.name}</td>
-                <td>{data.email}</td>
-                <td>{data.birth_date}</td>
-                <td>{data.year_of_experience}</td>
-                <td>{data.position_applied}</td>
-                <td>{data.application_date}</td>
-                <td>{data.status}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        {applicants.length === 0 ? (
+          <Spinner />
+        ) : (
+          <div>
+            <div className="card">
+              <div className="card-header">
+                <h6 className="text-primary">Applicant Details</h6>
+              </div>
+
+              <div className="card-body">
+                <div className="form-row">
+                  <div className="form-group col-md-12">
+                    <label>Search</label>
+                    <SearchControl
+                      handleSearch={this.handleSearch}
+                      value={this.state.searchQuery}
+                    />
+                  </div>
+                </div>
+                <Table data={applicants} />
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     );
   }
