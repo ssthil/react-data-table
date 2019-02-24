@@ -7,16 +7,16 @@
 .spinner {
     display: inline-block;
     position: relative;
-    width: 64px;
-    height: 64px;
+    width: 100px;
+    height: 100px;
 }
 
 .spinner div {
     box-sizing: border-box;
     display: block;
     position: absolute;
-    width: 51px;
-    height: 51px;
+    width: 90px;
+    height: 90px;
     margin: 6px;
     border: 6px solid #004085;
     border-radius: 50%;

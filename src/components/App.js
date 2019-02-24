@@ -50,7 +50,8 @@ class App extends Component {
     });
 
     this.setState({
-      filterApplicants: (selectValue === 'all')  ?  this.state.applicants : filteredData
+      filterApplicants:
+        selectValue === 'all' ? this.state.applicants : filteredData
     });
   };
 
@@ -66,7 +67,7 @@ class App extends Component {
             <div>
               <div className="card">
                 <div className="card-header">
-                  <h6 className="text-primary margin-padding-none">
+                  <h6 className="text-default margin-padding-none">
                     Applicant Details
                   </h6>
                 </div>
@@ -74,8 +75,8 @@ class App extends Component {
                 <div className="card-body">
                   <div className="form-row">
                     <div className="form-group col-md-10">
-                      <label>Search</label>
                       <SearchControl
+                        label="Search"
                         handleSearch={this.handleSearch}
                         value={this.state.searchQuery}
                       />
