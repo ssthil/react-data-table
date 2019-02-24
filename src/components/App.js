@@ -29,7 +29,12 @@ class App extends Component {
     fetch(API_URL)
       .then(handleErrors)
       .then(response => response.json())
-      .then(result => this.setState({ applicants: result.data , filterApplicants: [...result.data]}));
+      .then(result =>
+        this.setState({
+          applicants: result.data,
+          filterApplicants: [...result.data]
+        })
+      );
   }
   /** search */
   handleSearch = e => {
@@ -39,27 +44,23 @@ class App extends Component {
   };
 
   /** handle change */
-  handleChange = (selectValue) => {
-
-    const filteredData = this.state.applicants.filter((applicant) => {
+  handleChange = selectValue => {
+    const filteredData = this.state.applicants.filter(applicant => {
       return applicant.status === selectValue;
     });
 
     this.setState({
-      filterApplicants: filteredData
+      filterApplicants: (selectValue === 'all')  ?  this.state.applicants : filteredData
     });
-    console.log(this.state.filterApplicants);
-
-  }
+  };
 
   render() {
     const { title, applicants, filterApplicants } = this.state;
-    console.log(filterApplicants);
     return (
       <React.Fragment>
         <Header title={title} />
         <div className="container-fluid">
-          {applicants && applicants.length === 0 ? (
+          {filterApplicants && filterApplicants.length === 0 ? (
             <Spinner />
           ) : (
             <div>
@@ -80,10 +81,14 @@ class App extends Component {
                       />
                     </div>
                     <div className="form-group col-md-2">
-                      <Filter status={applicants} label="Filter" handleChange={this.handleChange}/>
+                      <Filter
+                        status={applicants}
+                        label="Filter"
+                        handleChange={this.handleChange}
+                      />
                     </div>
                   </div>
-                  <Table data={applicants} />
+                  <Table data={filterApplicants} />
                 </div>
               </div>
             </div>

@@ -28,11 +28,11 @@ th, td {
   display: flex;
 }
 .approved{
-  background: rgb(243, 13, 36);
+  background: rgb(6, 150, 42);
 }
 .waiting{
   background: rgb(243, 170, 13);
 }
 .rejected{
-  background: rgb(6, 150, 42);
+  background: rgb(243, 13, 36);
 }
