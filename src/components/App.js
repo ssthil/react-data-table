@@ -37,9 +37,17 @@ class App extends Component {
       );
   }
   /** search */
-  handleSearch = e => {
+  handleSearch = searchQuery => {
+    const searchApplicant = this.state.applicants.filter(applicant => {
+      return (
+        applicant.name.toLowerCase().search(searchQuery.toLowerCase()) !== -1 ||
+        applicant.position_applied
+          .toLowerCase()
+          .search(searchQuery.toLowerCase()) !== -1
+      );
+    });
     this.setState({
-      searchQuery: e.target.value
+      filterApplicants: searchApplicant
     });
   };
 
