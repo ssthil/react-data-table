@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Spinner from './Spinner/Spinner';
 import Table from './Table/Table';
 import SearchControl from './SearchControl';
+import Filter from './Filter/Filter';
 /** api url */
 const API_URL = 'https://personio-fe-test.herokuapp.com/api/v1/candidates';
 
@@ -48,12 +49,16 @@ class App extends Component {
 
               <div className="card-body">
                 <div className="form-row">
-                  <div className="form-group col-md-12">
+                  <div className="form-group col-md-10">
                     <label>Search</label>
                     <SearchControl
                       handleSearch={this.handleSearch}
                       value={this.state.searchQuery}
                     />
+                  </div>
+                  <div className="form-group col-md-2">
+                    <label>Filter</label>
+                    <Filter status={applicants} />
                   </div>
                 </div>
                 <Table data={applicants} />
