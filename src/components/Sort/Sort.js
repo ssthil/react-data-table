@@ -13,19 +13,7 @@ class Sort extends Component {
   }
 
   handleSorting = () => {
-    var copiedApplicants = [...this.state.applicants];
-    copiedApplicants.sort(function(obj1, obj2) {
-      var position1 = obj1.position_applied.toLowerCase();
-      var position2 = obj2.position_applied.toLowerCase();
 
-      if (position1 < position2) {
-        return -1;
-      } else if (position1 > position2) {
-        return 1;
-      }
-      return 0;
-    });
-    console.log(copiedApplicants.map(obj => obj.position_applied));
     this.setState(state => ({
       sort: !state.sort
       // applicants: copiedApplicants

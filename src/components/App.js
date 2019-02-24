@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 /** components */
+import Header from './Header/Header';
 import Spinner from './Spinner/Spinner';
 import Table from './Table/Table';
-import SearchControl from './SearchControl';
+import SearchControl from './SearchControl/SearchControl';
 import Filter from './Filter/Filter';
 /** api url */
 const API_URL = 'https://personio-fe-test.herokuapp.com/api/v1/candidates';
@@ -36,37 +37,39 @@ class App extends Component {
   render() {
     const { title, applicants } = this.state;
     return (
-      <div className="container-fluid">
-        <h2>{title} </h2>
-        {applicants.length === 0 ? (
-          <Spinner />
-        ) : (
-          <div>
-            <div className="card">
-              <div className="card-header">
-                <h6 className="text-primary">Applicant Details</h6>
-              </div>
-
-              <div className="card-body">
-                <div className="form-row">
-                  <div className="form-group col-md-10">
-                    <label>Search</label>
-                    <SearchControl
-                      handleSearch={this.handleSearch}
-                      value={this.state.searchQuery}
-                    />
-                  </div>
-                  <div className="form-group col-md-2">
-                    <label>Filter</label>
-                    <Filter status={applicants} />
-                  </div>
+      <React.Fragment>
+        <Header title={title} />
+        <div className="container-fluid">
+          {applicants.length === 0 ? (
+            <Spinner />
+          ) : (
+            <div>
+              <div className="card">
+                <div className="card-header">
+                  <h6 className="text-primary">Applicant Details</h6>
                 </div>
-                <Table data={applicants} />
+
+                <div className="card-body">
+                  <div className="form-row">
+                    <div className="form-group col-md-10">
+                      <label>Search</label>
+                      <SearchControl
+                        handleSearch={this.handleSearch}
+                        value={this.state.searchQuery}
+                      />
+                    </div>
+                    <div className="form-group col-md-2">
+                      <label>Filter</label>
+                      <Filter status={applicants} />
+                    </div>
+                  </div>
+                  <Table data={applicants} />
+                </div>
               </div>
             </div>
-          </div>
-        )}
-      </div>
+          )}
+        </div>
+      </React.Fragment>
     );
   }
 }

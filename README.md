@@ -16,10 +16,10 @@ Install react and react-dom as a **dependency**
 Then install babel as a **dev dependency**
 
 ##### create dir
-```mkdir react-webpack-starter```
+```mkdir react-data-table```
 
 ##### into the dir
-```cd react-webpack-starter```
+```cd react-data-table```
 
 ##### initialize
 ```yarn init -y```
