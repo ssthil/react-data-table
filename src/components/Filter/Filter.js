@@ -2,9 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Filter.css';
 
-const Filter = ({ status, label }) => {
+const Filter = ({ status, label, handleChange }) => {
   const statusArray = status.map(obj => obj.status);
   const uniqueValue = [...new Set(statusArray)];
+
+  const filterChange = e => {
+    console.log(e.target.value);
+    handleChange(e.target.value);
+  };
 
   return (
     <React.Fragment>
@@ -13,7 +18,9 @@ const Filter = ({ status, label }) => {
         <select
           id="status"
           className="form-control capitalize-text font-size-sm"
+          onChange={filterChange}
         >
+          <option value="all">All</option>
           {uniqueValue &&
             uniqueValue.map(status => (
               <option key={status} value={status}>
@@ -28,7 +35,8 @@ const Filter = ({ status, label }) => {
 
 Filter.propTypes = {
   status: PropTypes.array,
-  label: PropTypes.string
+  label: PropTypes.string,
+  handleChange: PropTypes.func
 };
 
 export default Filter;
