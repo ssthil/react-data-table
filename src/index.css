@@ -1,0 +1,14 @@
+/** global styles */
+.font-size-sm{
+  font-size: 13px;
+}
+
+.font-size-sm-b{
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.margin-padding-none{
+  margin: 0;
+  padding: 0;
+}

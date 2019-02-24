@@ -9,14 +9,15 @@ const headerName=['Name', 'Email', 'Birth Date', 'Experience', 'Position Applied
 const Table = props => {
   const { data } = props;
   return (
-    <table className="table">
+    <table className="table table-striped">
       <THeader
         names={headerName}
         applicants={data}
+        className="font-size-sm-b"
       />
       <tbody>
-        {data.map(applicant => (
-          <TRow key={applicant.id} data={applicant} />
+        {data && data.map(applicant => (
+          <TRow key={applicant.id} data={applicant} className="font-size-sm" />
         ))}
       </tbody>
     </table>

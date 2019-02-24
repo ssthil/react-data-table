@@ -5,6 +5,8 @@ import Spinner from './Spinner/Spinner';
 import Table from './Table/Table';
 import SearchControl from './SearchControl/SearchControl';
 import Filter from './Filter/Filter';
+
+import { handleErrors } from '../utils';
 /** api url */
 const API_URL = 'https://personio-fe-test.herokuapp.com/api/v1/candidates';
 
@@ -23,6 +25,7 @@ class App extends Component {
 
   fetchData() {
     fetch(API_URL)
+      .then(handleErrors)
       .then(response => response.json())
       .then(result => this.setState({ applicants: result.data }));
   }
@@ -31,7 +34,6 @@ class App extends Component {
     this.setState({
       searchQuery: e.target.value
     });
-    console.log(this.state.searchQuery);
   };
 
   render() {
@@ -40,13 +42,15 @@ class App extends Component {
       <React.Fragment>
         <Header title={title} />
         <div className="container-fluid">
-          {applicants.length === 0 ? (
+          {applicants && applicants.length === 0 ? (
             <Spinner />
           ) : (
             <div>
               <div className="card">
                 <div className="card-header">
-                  <h6 className="text-primary">Applicant Details</h6>
+                  <h6 className="text-primary margin-padding-none">
+                    Applicant Details
+                  </h6>
                 </div>
 
                 <div className="card-body">
@@ -59,8 +63,7 @@ class App extends Component {
                       />
                     </div>
                     <div className="form-group col-md-2">
-                      <label>Filter</label>
-                      <Filter status={applicants} />
+                      <Filter status={applicants} label="Filter"/>
                     </div>
                   </div>
                   <Table data={applicants} />

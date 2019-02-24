@@ -6,7 +6,7 @@ const SearchControl = ({ handleSearch }) => {
   return (
     <div className="form-group">
       <input
-        className="form-control"
+        className="form-control font-size-sm"
         onChange={handleSearch}
         type="search"
         placeholder="Search for name, position"
