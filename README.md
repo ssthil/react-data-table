@@ -35,4 +35,4 @@ In the single page React app included below features:
 - A build script to bundle JS, CSS, and images for production, with hashes and sourcemaps.
 
 ## Folder Structure
-Check out ![Folder Structure](https://github.com/ssthil/react-data-table/tree/master/src/assets/img/folder-structure.jpg)
+Check out ![Folder Structure](https://raw.githubusercontent.com/ssthil/react-data-table/master/src/assets/img/folder-structure.jpg)
