@@ -3,17 +3,17 @@ import PropTypes from 'prop-types';
 import THeader from './THeader';
 import TRow from './TRow';
 import './Table.css';
-
-const headerName=['Name', 'Email', 'Birth Date', 'Experience', 'Position Applied', 'Application Date', 'Status'];
+import { headerName } from '../../constant';
 
 const Table = props => {
-  const { data } = props;
+  const { data, handleSorting, className } = props;
   return (
-    <table className="table table-striped">
+    <table className={className}>
       <THeader
-        names={headerName}
+        headerNames={headerName}
         applicants={data}
         className="font-size-md-b"
+        handleSorting={handleSorting}
       />
       <tbody>
         {data && data.map(applicant => (
@@ -26,8 +26,8 @@ const Table = props => {
 
 Table.propTypes = {
   data: PropTypes.array,
-  sort: PropTypes.bool,
-  handleSorting: PropTypes.func
+  handleSorting: PropTypes.func,
+  className: PropTypes.string
 };
 
 export default Table;

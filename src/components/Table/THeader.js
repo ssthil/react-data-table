@@ -4,17 +4,20 @@ import PropTypes from 'prop-types';
 import Sort from '../Sort/Sort';
 
 const THeader = props => {
-  const { names, applicants, className } = props;
+  const { headerNames, className, handleSorting } = props;
+  // const names = headerNames.reduce((acc, value) => {
+  //   acc.push(value.name);
+  // }, []);
 
   return (
     <thead>
       <tr>
-        {names.map(name => (
-          <th key={name} className={className}>
-            {name}{' '}
-            {(name === 'Position Applied' ||
-              name === 'Experience' ||
-              name === 'Application Date') && <Sort applicants={applicants} />}
+        {headerNames.map(header => (
+          <th key={header.name} className={className}>
+            {header.name}{' '}
+            {(header.name === 'Position Applied' ||
+              header.name === 'Experience' ||
+              header.name === 'Application Date') && <Sort headerKey={header.key} handleSorting={handleSorting} />}
           </th>
         ))}
       </tr>
@@ -23,9 +26,10 @@ const THeader = props => {
 };
 
 THeader.propTypes = {
-  names: PropTypes.array,
+  headerNames: PropTypes.array,
   applicants: PropTypes.array,
-  className: PropTypes.string
+  className: PropTypes.string,
+  handleSorting: PropTypes.func
 };
 
 export default THeader;

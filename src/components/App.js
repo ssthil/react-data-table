@@ -8,6 +8,7 @@ import Filter from './Filter/Filter';
 import LegendIndicator from './global/LegendIndicator/LegendIndicator';
 
 import { handleErrors } from '../utils';
+import { legendLabel } from '../constant';
 /** api url */
 import API_CONFIG from '../config/api';
 const API_URL = API_CONFIG.URL + API_CONFIG.PARAM;
@@ -67,9 +68,37 @@ class App extends Component {
     });
   };
 
+  /** handle sorting */
+
+  handleSorting = (sortBy, orderBy) => {
+    const copiedApplicants = this.state.applicants.sort((obj1, obj2) => {
+      var position1 =
+        typeof obj1[sortBy] === 'string'
+          ? obj1[sortBy].toLowerCase()
+          : obj1[sortBy];
+      var position2 =
+        typeof obj2[sortBy] === 'string'
+          ? obj2[sortBy].toLowerCase()
+          : obj2[sortBy];
+
+      if (position1 < position2) {
+        return orderBy ? -1 : 1;
+      } else if (position1 > position2) {
+        return orderBy ? 1 : -1;
+      }
+      return 0;
+    });
+
+    // console.log(copiedApplicants.map(obj => obj.position_applied));
+
+    this.setState({
+      filterApplicants: copiedApplicants
+    });
+  };
+
   render() {
     const { applicants, filterApplicants } = this.state;
-    const legendLabel = ['rejected', 'waiting', 'approved'];
+
     return (
       <React.Fragment>
         <Header title="React Data Table App" className="title" />
@@ -78,7 +107,7 @@ class App extends Component {
             <Spinner />
           ) : (
             <div>
-              <LegendIndicator legendLabel={legendLabel}/>
+              <LegendIndicator legendLabel={legendLabel} />
               <div className="card">
                 <div className="card-header">
                   <Header
@@ -105,7 +134,11 @@ class App extends Component {
                       />
                     </div>
                   </div>
-                  <Table data={filterApplicants} />
+                  <Table
+                    className="table table-striped"
+                    data={filterApplicants}
+                    handleSorting={this.handleSorting}
+                  />
                 </div>
               </div>
             </div>

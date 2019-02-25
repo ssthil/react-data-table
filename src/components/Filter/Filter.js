@@ -3,8 +3,13 @@ import PropTypes from 'prop-types';
 import './Filter.css';
 
 const Filter = ({ status, label, handleChange }) => {
-  const statusArray = status.map(obj => obj.status);
-  const uniqueValue = [...new Set(statusArray)];
+  // const uniqueValue = [...new Set(statusArray)];
+  const uniqueValue = [];
+  status.map(obj => {
+    if(uniqueValue.indexOf(obj.status) === -1) {
+      uniqueValue.push(obj.status);
+    }
+  });
 
   const filterChange = e => {
     handleChange(e.target.value);

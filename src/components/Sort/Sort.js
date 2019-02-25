@@ -7,24 +7,23 @@ class Sort extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      sort: false,
-      applicants: this.props.applicants
+      order: false
     };
   }
 
   handleSorting = () => {
-
     this.setState(state => ({
-      sort: !state.sort
-      // applicants: copiedApplicants
+      order: !state.order
     }));
+
+    this.props.handleSorting(this.props.headerKey, this.state.order);
   };
 
   render() {
-    const { sort } = this.state;
+    const { order } = this.state;
     return (
       <span className="float-right sort-icon" onClick={this.handleSorting}>
-        {sort ? (
+        {order ? (
           <i className="fas fa-sort-amount-up" />
         ) : (
           <i className="fas fa-sort-amount-down" />
@@ -35,9 +34,8 @@ class Sort extends Component {
 }
 
 Sort.propTypes = {
-  sort: PropTypes.bool,
   handleSorting: PropTypes.func,
-  applicants: PropTypes.array
+  headerKey: PropTypes.string
 };
 
 export default Sort;
