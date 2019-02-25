@@ -37,5 +37,5 @@ In the single page React app included below features:
 ## Folder Structure
 
 <p>
-<img src='https://raw.githubusercontent.com/ssthil/react-data-table/master/src/assets/img/folder-structure.jpg' width='500' alt='Folder Structure'>
+<img src='https://raw.githubusercontent.com/ssthil/react-data-table/master/src/assets/img/folder-structure-light.jpg' width='500' alt='Folder Structure'>
 </p>
