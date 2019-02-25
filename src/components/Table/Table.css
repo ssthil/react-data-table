@@ -2,8 +2,13 @@ table {
   border-collapse: collapse;
   width: 100%;
 }
+.table thead th {
+  vertical-align: bottom;
+  border: 1px solid #bcd0e4;
+  border-bottom: 2px solid #c2d3e6;
+}
 th{
-  background: #e0e3fd;
+  background: #dce9fd;
   color: #0e1840;
 }
 table, th, td {
@@ -15,7 +20,7 @@ th, td {
 }
 
 .table-striped tbody tr:nth-of-type(even) {
-  background-color: rgba(222, 230, 240, 0.05);
+  background-color: rgba(91, 129, 177, 0.05);
 }
 .table-striped tbody tr:nth-of-type(odd) {
   background-color: #ffffff;
