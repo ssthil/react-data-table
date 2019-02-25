@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 /** components */
-import Header from './Header/Header';
-import Spinner from './Spinner/Spinner';
+import Header from './global/Header/Header';
+import Spinner from './global/Spinner/Spinner';
 import Table from './Table/Table';
-import SearchControl from './SearchControl/SearchControl';
+import SearchControl from './global/SearchControl/SearchControl';
 import Filter from './Filter/Filter';
 
 import { handleErrors } from '../utils';
@@ -87,6 +87,8 @@ class App extends Component {
                     <div className="form-group col-md-10">
                       <SearchControl
                         label="Search"
+                        className="form-control font-size-sm"
+                        placeholder="Search for name, position"
                         handleSearch={this.handleSearch}
                         value={this.state.searchQuery}
                       />

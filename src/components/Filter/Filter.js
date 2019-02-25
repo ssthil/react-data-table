@@ -7,7 +7,6 @@ const Filter = ({ status, label, handleChange }) => {
   const uniqueValue = [...new Set(statusArray)];
 
   const filterChange = e => {
-    console.log(e.target.value);
     handleChange(e.target.value);
   };
 

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './SearchControl.css';
 
-const SearchControl = ({ label, handleSearch }) => {
+const SearchControl = ({ label, handleSearch, className, placeholder }) => {
 
   const searchApplicant = (e) => {
     handleSearch(e.target.value);
@@ -13,10 +13,10 @@ const SearchControl = ({ label, handleSearch }) => {
       <label>{label}</label>
       <div className="form-group">
         <input
-          className="form-control font-size-sm"
+          className={className}
           onChange={searchApplicant}
           type="search"
-          placeholder="Search for name, position"
+          placeholder={placeholder}
         />
       </div>
     </React.Fragment>
@@ -25,7 +25,9 @@ const SearchControl = ({ label, handleSearch }) => {
 
 SearchControl.propTypes = {
   handleSearch: PropTypes.func,
-  label: PropTypes.string
+  label: PropTypes.string,
+  className: PropTypes.string,
+  placeholder: PropTypes.string
 };
 
 export default SearchControl;
