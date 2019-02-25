@@ -8,13 +8,14 @@ import Filter from './Filter/Filter';
 
 import { handleErrors } from '../utils';
 /** api url */
-const API_URL = 'https://personio-fe-test.herokuapp.com/api/v1/candidates';
+import API_CONFIG from '../config/api';
+// const API_URL = 'https://personio-fe-test.herokuapp.com/api/v1/candidates';
+const API_URL = API_CONFIG.URL + API_CONFIG.PARAM;
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: 'React Data Table App',
       applicants: [],
       filterApplicants: [],
       filterValue: 'all'
@@ -59,15 +60,15 @@ class App extends Component {
 
     this.setState({
       filterApplicants:
-        selectValue === 'all' ? this.state.applicants : filteredData
+        selectValue === this.state.filterValue ? this.state.applicants : filteredData
     });
   };
 
   render() {
-    const { title, applicants, filterApplicants } = this.state;
+    const { applicants, filterApplicants } = this.state;
     return (
       <React.Fragment>
-        <Header title={title} />
+        <Header title="React Data Table App" className="title"/>
         <div className="container-fluid">
           {filterApplicants && filterApplicants.length === 0 ? (
             <Spinner />
@@ -75,9 +76,10 @@ class App extends Component {
             <div>
               <div className="card">
                 <div className="card-header">
-                  <h6 className="text-default margin-padding-none">
+                  <Header title="Applicant Details" className="text-default margin-padding-none" />
+                  {/*<h6 className="text-default margin-padding-none">
                     Applicant Details
-                  </h6>
+          </h6>*/}
                 </div>
 
                 <div className="card-body">

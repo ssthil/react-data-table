@@ -13,7 +13,7 @@ const Table = props => {
       <THeader
         names={headerName}
         applicants={data}
-        className="font-size-sm-b"
+        className="font-size-md-b"
       />
       <tbody>
         {data && data.map(applicant => (

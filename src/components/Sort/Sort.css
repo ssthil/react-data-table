@@ -8,3 +8,7 @@
 .sort-icon:hover {
   opacity: 0.6
 }
+
+.fa, .fas {
+  color: #4f7abf;
+}
