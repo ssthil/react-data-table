@@ -1,6 +1,7 @@
 /** global styles */
 body {
   font-family: 'Roboto Condensed', sans-serif !important;
+  background: #eaedf3;
 }
 .font-size-sm{
   font-size: 13px;

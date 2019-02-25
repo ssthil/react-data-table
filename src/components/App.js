@@ -19,7 +19,8 @@ class App extends Component {
     this.state = {
       applicants: [],
       filterApplicants: [],
-      filterValue: 'all'
+      filterValue: 'all',
+      fetching: false
     };
   }
 
@@ -29,13 +30,17 @@ class App extends Component {
 
   /** fetch all data */
   fetchData() {
+    this.setState({
+      fetching: true
+    });
     fetch(API_URL)
       .then(handleErrors)
       .then(response => response.json())
       .then(result =>
         this.setState({
           applicants: result.data,
-          filterApplicants: [...result.data]
+          filterApplicants: [...result.data],
+          fetching: false
         })
       );
   }
@@ -49,6 +54,7 @@ class App extends Component {
           .search(searchQuery.toLowerCase()) !== -1
       );
     });
+
     this.setState({
       filterApplicants: searchApplicant
     });
@@ -97,13 +103,13 @@ class App extends Component {
   };
 
   render() {
-    const { applicants, filterApplicants } = this.state;
+    const { applicants, filterApplicants, fetching } = this.state;
 
     return (
       <React.Fragment>
         <Header title="React Data Table App" className="title" />
         <div className="container-fluid">
-          {filterApplicants && filterApplicants.length === 0 ? (
+          {fetching ? (
             <Spinner />
           ) : (
             <div>
@@ -134,11 +140,17 @@ class App extends Component {
                       />
                     </div>
                   </div>
-                  <Table
-                    className="table table-striped"
-                    data={filterApplicants}
-                    handleSorting={this.handleSorting}
-                  />
+                  {filterApplicants && filterApplicants.length !== 0 ? (
+                    <Table
+                      className="table table-striped"
+                      data={filterApplicants}
+                      handleSorting={this.handleSorting}
+                    />
+                  ) : (
+                    <div className="alert alert-warning">
+                      Searching value is not available in the table!
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
