@@ -1,6 +1,6 @@
 # React Data Table app
 
-> Build pure React based reusable table component and populated data from API
+> Built pure React based reusable table component and populated data from API
 
 Simple React Table componet. ```React + webpack 4 + bootstrap```
 
