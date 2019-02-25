@@ -33,3 +33,6 @@ In the single page React app included below features:
 - husky: Will run npm script before the committing the code
 - A live development server that warns about common mistakes.
 - A build script to bundle JS, CSS, and images for production, with hashes and sourcemaps.
+
+## Folder Structure
+Check out ![Folder Structure](https://github.com/ssthil/react-data-table/tree/master/src/assets/img/folder-structure.jpg)
