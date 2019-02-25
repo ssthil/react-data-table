@@ -1,34 +1,35 @@
-### React Data Table
-Simple react data table app
+# React Data Table app
 
-## Project description
-Simple boilerplate for ```React + webpack 4```
+> Build pure React based reusable table component and populated data from API
 
-### Step 1
-Make a new project
+Simple React Table componet. ```React + webpack 4 + bootstrap```
 
-#### Setting Up React and Babel
 
-We need to install webpack as a **dev dependency** and webpack-cli
+## How to install on your computer
 
-Install react and react-dom as a **dependency**
+```bash
+# Clone this git repo:
+git clone https://github.com/ssthil/react-data-table.git
 
-Then install babel as a **dev dependency**
+cd react-data-table/
 
-##### create dir
-```mkdir react-data-table```
+# Install dependencies.
+npm install
 
-##### into the dir
-```cd react-data-table```
+# Install dependencies.
+npm run start
 
-##### initialize
-```yarn init -y```
+```
 
-##### install dev dependencies
-```yarn add webpack webpack-cli webpack-dev-server @babel/core @babel/preset-env @babel/preset-react babel-loader html-webpack-plugin --dev```
+## What’s Included?
 
-#### install dependencies
-```yarn add react react-dom && touch webpack.config.js .babelrc README.md .gitignore```
+In the single page React app included below features:
 
-#### create dir src and files
-```mkdir src && cd $_ && touch index.js index.html```
+- React, JSX, ES6, PropTypes.
+- Language extras beyond ES6 like the object spread operator.
+- eslint: They organise them nicely into things that might cause errors, best practices, variables, stylistic choices, ES6 and more
+- prettier: Will prettify our code
+- lint-staged: Will run custom script on the filtered files by the extensions like .js or .jsx
+- husky: Will run npm script before the committing the code
+- A live development server that warns about common mistakes.
+- A build script to bundle JS, CSS, and images for production, with hashes and sourcemaps.
