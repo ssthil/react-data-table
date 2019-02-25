@@ -21,7 +21,7 @@ const TRow = ({ data, className }) => {
       <td>{year_of_experience}</td>
       <td>{position_applied}</td>
       <td>{application_date}</td>
-      <td>{<span className={`status-bar ${status}`} title={status} />}</td>
+      <td className="align-center">{<span className={`status-bar ${status}`} title={status} />}</td>
     </tr>
   );
 };

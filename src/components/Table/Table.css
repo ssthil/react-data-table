@@ -19,6 +19,10 @@ th, td {
   text-align: left;
 }
 
+td.align-center {
+  text-align: center;
+}
+
 .table-striped tbody tr:nth-of-type(even) {
   background-color: rgba(91, 129, 177, 0.05);
 }
@@ -29,8 +33,8 @@ th, td {
 .status-bar{
   margin-top:5px;
   height: 10px;
-  width: 100%;
-  display: flex;
+  width: 75%;
+  display: inline-block;
 }
 .approved{
   background: rgb(6, 150, 42);
@@ -40,4 +44,27 @@ th, td {
 }
 .rejected{
   background: rgb(243, 13, 36);
+}
+
+.legend-container{
+  padding: 0 0 10px 0;
+  font-size: 13px;
+}
+
+.legend-container-bars{
+  display: inline-block;
+  color: #949ba2;
+}
+
+.legend-status-bars{
+  display: inline-block;
+}
+
+.status-bar.legend{
+  width: 35px;
+  margin: 0 7px;
+  display: inline-block;
+}
+.legend-label{
+  padding-right: 30px;
 }

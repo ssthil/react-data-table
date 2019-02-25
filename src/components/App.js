@@ -5,11 +5,11 @@ import Spinner from './global/Spinner/Spinner';
 import Table from './Table/Table';
 import SearchControl from './global/SearchControl/SearchControl';
 import Filter from './Filter/Filter';
+import LegendIndicator from './global/LegendIndicator/LegendIndicator';
 
 import { handleErrors } from '../utils';
 /** api url */
 import API_CONFIG from '../config/api';
-// const API_URL = 'https://personio-fe-test.herokuapp.com/api/v1/candidates';
 const API_URL = API_CONFIG.URL + API_CONFIG.PARAM;
 
 class App extends Component {
@@ -26,6 +26,7 @@ class App extends Component {
     this.fetchData();
   }
 
+  /** fetch all data */
   fetchData() {
     fetch(API_URL)
       .then(handleErrors)
@@ -60,28 +61,31 @@ class App extends Component {
 
     this.setState({
       filterApplicants:
-        selectValue === this.state.filterValue ? this.state.applicants : filteredData
+        selectValue === this.state.filterValue
+          ? this.state.applicants
+          : filteredData
     });
   };
 
   render() {
     const { applicants, filterApplicants } = this.state;
+    const legendLabel = ['rejected', 'waiting', 'approved'];
     return (
       <React.Fragment>
-        <Header title="React Data Table App" className="title"/>
+        <Header title="React Data Table App" className="title" />
         <div className="container-fluid">
           {filterApplicants && filterApplicants.length === 0 ? (
             <Spinner />
           ) : (
             <div>
+              <LegendIndicator legendLabel={legendLabel}/>
               <div className="card">
                 <div className="card-header">
-                  <Header title="Applicant Details" className="text-default margin-padding-none" />
-                  {/*<h6 className="text-default margin-padding-none">
-                    Applicant Details
-          </h6>*/}
+                  <Header
+                    title="Applicant Details"
+                    className="text-default margin-padding-none"
+                  />
                 </div>
-
                 <div className="card-body">
                   <div className="form-row">
                     <div className="form-group col-md-10">

@@ -1,0 +1,23 @@
+.legend-container {
+    padding: 0 0 10px 0;
+    font-size: 13px;
+}
+
+.legend-container-bars {
+    display: inline-block;
+    color: #949ba2;
+}
+
+.legend-status-bars {
+    display: inline-block;
+}
+
+.status-bar.legend {
+    width: 35px;
+    margin: 0 7px;
+    display: inline-block;
+}
+
+.legend-label {
+    padding-right: 30px;
+}
